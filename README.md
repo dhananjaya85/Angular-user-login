@@ -1,6 +1,6 @@
-# Angular-user-login
+# User-login and Registration in Angular
 
-# Follow below steps to Host Angular application in IIS Server
+## steps to Host Angular application in IIS Server
 
 01. Please clone or download the source code via this url (https://github.com/dhananjaya85/Angular-user-login.git) 
 To run the app locally, do 'npm install' and then execute 'ng serve' command. You can now open the browser and browse the url http://localhost:4200/ 
