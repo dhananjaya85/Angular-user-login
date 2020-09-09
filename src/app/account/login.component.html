@@ -1,0 +1,42 @@
+<div class="card">
+    <h4 class="card-header">Sign In</h4>
+    <div class="card-body">
+
+        <div *ngIf="isValidUser">
+            <div style="text-align: center;"><h2>Welcome</h2> {{user.username}}</div>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group" *ngIf="!isValidUser">
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" placeholder="JohnSmith" class="form-control" 
+                    [ngClass]="{ 'is-invalid': (userSubmitted && f.username.errors) || (userSubmitted && invalidUsername) }"/>
+                <div *ngIf="userSubmitted && f.username?.errors" class="invalid-feedback">
+                    <div *ngIf="f.username?.errors.required">Please enter username</div>                 
+                </div>
+                <div *ngIf="userSubmitted && invalidUsername" class="invalid-feedback">
+                    <div *ngIf="invalidUsername">The username is not recognized</div>
+                </div>
+            </div>
+            <div class="form-group" *ngIf="isValidUser">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" (input)="onSearchChange($event.target.value)" 
+                    [ngClass]="{ 'is-invalid': (submitted && f.password.touched && f.password.errors) || (submitted && invalidAuthentication) }" />
+                <div *ngIf="submitted && f.password.touched && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Please enter password</div>
+                </div>
+                <div *ngIf="submitted && invalidAuthentication" class="invalid-feedback">
+                    <div *ngIf="invalidAuthentication">The username or password not recognized</div>
+                </div>
+            </div>       
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary btn-lg btn-block">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    {{buttonText}}
+                </button>
+                <p style="text-align:center;">New to Autodesk ? 
+                    <a routerLink="../register" class="btn btn-link">Create Account</a></p> 
+            </div>
+        </form>
+    </div>
+</div>

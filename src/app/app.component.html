@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand navbar-dark bg-light" *ngIf="user">
+  <nav class="navbar-nav">
+    <a class="btn btn-link" (click)="logout()">Logout</a>
+  </nav>
+</nav>
+
+<div class="app-container" [ngClass]="{ 'bg-light' : user }">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- footer -->
+<div class="footer text-center">
+  <p class="description">Your account for everything Autodesk</p>
+  <p class="learn-more"><a href="https://www.autodesk.com" target="_top">Learn more</a></p>
+</div>
